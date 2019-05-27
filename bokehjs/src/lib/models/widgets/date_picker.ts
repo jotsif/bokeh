@@ -9,34 +9,34 @@ Pikaday.prototype.adjustPosition = function(this: Pikaday & {_o: Pikaday.Pikaday
   if (this._o.container)
     return
 
-  this.el.style.position = 'absolute'
+  this.el.style.position = 'relative'
 
-  const field = this._o.trigger!
-  const width = this.el.offsetWidth
-  const height = this.el.offsetHeight
-  const viewportWidth = window.innerWidth || document.documentElement!.clientWidth
-  const viewportHeight = window.innerHeight || document.documentElement!.clientHeight
-  const scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement!.scrollTop
+  // const field = this._o.trigger!
+  // const width = this.el.offsetWidth
+  // const height = this.el.offsetHeight
+  // const viewportWidth = window.innerWidth || document.documentElement!.clientWidth
+  // const viewportHeight = window.innerHeight || document.documentElement!.clientHeight
+  // const scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement!.scrollTop
 
-  const clientRect = field.getBoundingClientRect()
-  let left = clientRect.left + window.pageXOffset
-  let top = clientRect.bottom + window.pageYOffset
+  // const clientRect = field.getBoundingClientRect()
+  // let left = clientRect.left + window.pageXOffset
+  // let top = clientRect.bottom + window.pageYOffset
 
-  // adjust left/top origin to bk-root
-  left -= this.el.parentElement!.offsetLeft
-  top -= this.el.parentElement!.offsetTop
+  // // adjust left/top origin to bk-root
+  // left -= this.el.parentElement!.offsetLeft
+  // top -= this.el.parentElement!.offsetTop
 
-  // default position is bottom & left
-  if ((this._o.reposition && left + width > viewportWidth) ||
-      (this._o.position!.indexOf('right') > -1 && left - width + field.offsetWidth > 0))
-    left = left - width + field.offsetWidth
+  // // default position is bottom & left
+  // if ((this._o.reposition && left + width > viewportWidth) ||
+  //     (this._o.position!.indexOf('right') > -1 && left - width + field.offsetWidth > 0))
+  //   left = left - width + field.offsetWidth
 
-  if ((this._o.reposition && top + height > viewportHeight + scrollTop) ||
-      (this._o.position!.indexOf('top') > -1 && top - height - field.offsetHeight > 0))
-    top = top - height - field.offsetHeight
+  // if ((this._o.reposition && top + height > viewportHeight + scrollTop) ||
+  //     (this._o.position!.indexOf('top') > -1 && top - height - field.offsetHeight > 0))
+  //   top = top - height - field.offsetHeight
 
-  this.el.style.left = left + 'px'
-  this.el.style.top = top + 'px'
+  this.el.style.left = '0 px'
+  this.el.style.top = '0 px'
 }
 
 export class DatePickerView extends InputWidgetView {
